@@ -4,21 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : UIMonoBehaviour
 {
-    [SerializeField] private float camSmoothTime;
-    [SerializeField] private Camera cam;
+    [SerializeField] private float transitionSmoothTime;
+    [SerializeField] private RectTransform screensRoot;
     [SerializeField] private CanvasGroup transitionOverlay;
 
     private readonly Dictionary<string, RectTransform> screens = new Dictionary<string, RectTransform>();
     
-    private Vector2 targetCamPos;
+    private Vector2 targetPos;
 
-    private Vector2 camVelocity;
+    private Vector2 transitionVelocity;
 
     private void Start()
     {
-        for (int i = 0; i < rectTransform.childCount; i++)
+        for (int i = 0; i < screensRoot.childCount; i++)
         {
-            RectTransform screen = (RectTransform) rectTransform.GetChild(i);
+            RectTransform screen = (RectTransform) screensRoot.GetChild(i);
             screens[screen.name] = screen;
         }
         
@@ -27,7 +27,7 @@ public class MainMenu : UIMonoBehaviour
 
     private void Update()
     {
-        cam.transform.position = Vector2.SmoothDamp(cam.transform.position, targetCamPos, ref camVelocity, camSmoothTime);
+        screensRoot.anchoredPosition = Vector2.SmoothDamp(screensRoot.anchoredPosition, targetPos, ref transitionVelocity, transitionSmoothTime);
     }
 
     private void RunTransition()
@@ -55,6 +55,6 @@ public class MainMenu : UIMonoBehaviour
             return;
         }
 
-        targetCamPos = screen.position;
+        targetPos = -screen.anchoredPosition;
     }
 }
