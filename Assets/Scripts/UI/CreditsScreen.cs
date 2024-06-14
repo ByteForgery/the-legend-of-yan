@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class CreditsScreen : UIMonoBehaviour
 {
+    private const float THANKS_STOP_Y = 1440f / 2f;
+    
     [SerializeField] private float rollSpeed = 100f;
     [SerializeField] private float thanksStayTime = 2f;
     [SerializeField] private float transitionSmoothTime = 1f;
     [SerializeField] private RectTransform creditsRoot;
     [SerializeField] private RectTransform thanksRect;
     [SerializeField] private CanvasGroup creditsGroup;
+    [SerializeField] private Camera cam;
 
     private float initialY;
     
     private bool show;
-    private bool stopRoll;
+    private bool stopRoll = true;
 
     private float transitionVelocity;
 
@@ -46,13 +49,11 @@ public class CreditsScreen : UIMonoBehaviour
         if (show && Input.GetKeyDown(KeyCode.Escape))
             show = false;
 
-        if (thanksRect.position.y >= (rectTransform.rect.height - thanksRect.rect.height) / 2f && !stopRoll)
+        Debug.Log($"Thanks Y: {cam.ScreenToWorldPoint(thanksRect.position).y}");
+        if (cam.ScreenToWorldPoint(thanksRect.position).y >= 0f && !stopRoll)
         {
             stopRoll = true;
-            LeanTween.delayedCall(thanksStayTime, () =>
-            {
-                show = false;
-            });
+            LeanTween.delayedCall(thanksStayTime, () => show = false);
         }
 
         creditsGroup.blocksRaycasts = show;

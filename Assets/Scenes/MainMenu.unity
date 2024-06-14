@@ -4223,12 +4223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfee2abeddc8c14ea661a9c5a36d1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 100
+  rollSpeed: 150
   thanksStayTime: 2
   transitionSmoothTime: 0.5
   creditsRoot: {fileID: 551976363}
   thanksRect: {fileID: 232709608}
   creditsGroup: {fileID: 913582927}
+  cam: {fileID: 938364492}
 --- !u!1 &923710388
 GameObject:
   m_ObjectHideFlags: 0
