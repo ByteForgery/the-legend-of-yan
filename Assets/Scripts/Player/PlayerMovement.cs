@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 moveInput;
+    private Vector2 direction;
     
     private void Awake()
     {
@@ -20,9 +21,11 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         moveInput = new Vector2(x, y);
-        
+
         if (moveInput != Vector2.zero)
-            rotator.ApplyDirection(moveInput);
+            direction = moveInput;
+        
+        rotator.ApplyDirection(direction);
     }
 
     private void FixedUpdate()
@@ -30,4 +33,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movement = moveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement);
     }
+
+    public Vector2 Direction => direction;
 }

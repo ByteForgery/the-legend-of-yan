@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ice Wand Item
   m_EditorClassIdentifier: 
   displayName: Ice Wand
-  description: Shoots magic fireballs
+  description: Shoots magic icycles
   sprite: {fileID: -620115338, guid: b37e15de417f92740b7296f733bf0333, type: 3}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 6638346040680940670, guid: e4fdae7d5c7cf354b81b7f55e3d13764, type: 3}

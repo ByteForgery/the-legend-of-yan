@@ -38,11 +38,13 @@ public class LocationDiscoveredPopup : UIMonoBehaviour
 
         float underlineWidth = nameTrans.rect.width - locationTrans.rect.width - underlinePadding;
         underlineSpace.sizeDelta = new Vector2(underlineWidth, underlineSpace.sizeDelta.y);
-        
-        underline.LeanSize(new Vector2(underlineWidth, underline.sizeDelta.y), underlineGrowTime);
+
+        underline.LeanSize(new Vector2(underlineWidth, underline.sizeDelta.y), underlineGrowTime)
+            .setEaseInOutSine();            
+            
         group.LeanAlpha(1f, alphaInTime).setOnComplete(() =>
         {
-            LeanTween.delayedCall(stayTime, () =>
+            LeanTween.delayedCall(stayTime + underlineGrowTime, () =>
             {
                 group.LeanAlpha(0f, alphaOutTime).setOnComplete(ResetUnderline);
             });

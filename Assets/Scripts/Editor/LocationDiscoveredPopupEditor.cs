@@ -16,6 +16,6 @@ public class LocationDiscoveredPopupEditor : Editor
         base.OnInspectorGUI();
         
         if (GUILayout.Button("Show"))
-            popup.Show("Hateno Marketplace", "Hateno");
+            popup.Show("Topsels Basement", "Topsels Haus");
     }
 }
