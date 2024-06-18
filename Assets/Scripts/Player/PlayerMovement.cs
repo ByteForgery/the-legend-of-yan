@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
 
-    private Vector2 moveInput;
+    public Vector2 MoveInput {get; private set;}
     private Vector2 direction;
     
     private void Awake()
@@ -20,17 +20,17 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        moveInput = new Vector2(x, y);
+        MoveInput = new Vector2(x, y);
 
-        if (moveInput != Vector2.zero)
-            direction = moveInput;
+        if (MoveInput != Vector2.zero)
+            direction = MoveInput;
         
         rotator.ApplyDirection(direction);
     }
 
     private void FixedUpdate()
     {
-        Vector2 movement = moveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
+        Vector2 movement = MoveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement);
     }
 

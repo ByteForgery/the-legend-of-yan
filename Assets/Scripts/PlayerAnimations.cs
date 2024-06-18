@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour  //Yannik
 {
-
+    private PlayerMovement movement;
     private Animator animator;
+    private bool isMoving;
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.setBool(isMoving, true);
+        movement = GetComponent<PlayerMovement>();
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
-        if (animator.isMoving) {
-            animator.Play("running");
+        if (movement.MoveInput != null) {
             Debug.Log("läuft");
         }
     }
