@@ -14,8 +14,12 @@ public class LocationDiscoveredPopupEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+
+        bool isPlaying = Application.isPlaying;
         
+        if (!isPlaying) EditorGUI.BeginDisabledGroup(true);
         if (GUILayout.Button("Show"))
-            popup.Show("Topsels Basement", "Topsels Haus");
+            popup.Show("Yan's House", "Hyrule Hills");
+        if (!isPlaying) EditorGUI.BeginDisabledGroup(false);
     }
 }

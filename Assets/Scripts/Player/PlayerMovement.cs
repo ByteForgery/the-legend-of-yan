@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,24 +10,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput {get; private set;}
     private Vector2 direction;
+
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        MoveInput = new Vector2(x, y);
-
-        if (MoveInput != Vector2.zero)
-            direction = MoveInput;
-        
-        rotator.ApplyDirection(direction);
-    }
 
     private void FixedUpdate()
     {
@@ -34,5 +24,13 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement);
     }
 
-    public Vector2 Direction => direction;
+    public void Move(InputAction.CallbackContext ctx)
+    {
+        moveInput = ctx.ReadValue<Vector2>();
+
+        if (MoveInput != Vector2.zero)
+            Direction = moveInput;
+        
+        rotator.ApplyDirection(Direction);
+    }
 }
