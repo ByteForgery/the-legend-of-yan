@@ -23,9 +23,11 @@ public class WandProjectile : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D otherCol)
     {
-        Transform other = collision.transform;
+        Debug.Log("COLLISION");
+        
+        Transform other = otherCol.transform;
 
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)

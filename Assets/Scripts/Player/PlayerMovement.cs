@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private PlayerRotator rotator;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer gfx;
     
     private Rigidbody2D rb;
 
@@ -26,9 +28,18 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = ctx.ReadValue<Vector2>();
 
-        if (moveInput != Vector2.zero)
+        if (IsMoving)
+        {
             Direction = moveInput;
-        
+            animator.SetBool("IsMoving", true);
+        } else
+            animator.SetBool("IsMoving", false);
+
         rotator.ApplyDirection(Direction);
+
+        if (Direction.x != 0f)
+            gfx.flipX = Direction.x < 0f;
     }
+
+    public bool IsMoving => moveInput != Vector2.zero;
 }
