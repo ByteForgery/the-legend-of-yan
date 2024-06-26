@@ -7,21 +7,21 @@ public class ButtonHighlightAnimator : UIMonoBehaviour, IPointerEnterHandler, IP
     [SerializeField] private float additionalSize;
     [SerializeField] private RectTransform highlightRect;
 
-    private bool highlighted;
+    private bool isHighlighted;
 
     private float velocity;
 
     private void Update()
     {
-        float targetWidth = (highlighted ? additionalSize : 0f);
-        float smoothTime = highlighted ? smoothInTime : smoothOutTime;
+        float targetWidth = (isHighlighted ? additionalSize : 0f);
+        float smoothTime = isHighlighted ? smoothInTime : smoothOutTime;
 
         Vector2 size = highlightRect.sizeDelta;
         size.x = Mathf.SmoothDamp(size.x, targetWidth, ref velocity, smoothTime);
         highlightRect.sizeDelta = size;
     }
 
-    public void OnPointerEnter(PointerEventData eventData) => highlighted = true;
+    public void OnPointerEnter(PointerEventData eventData) => isHighlighted = true;
 
-    public void OnPointerExit(PointerEventData eventData) => highlighted = false;
+    public void OnPointerExit(PointerEventData eventData) => isHighlighted = false;
 }

@@ -14,7 +14,7 @@ public class CreditsScreen : UIMonoBehaviour
 
     private float initialY;
     
-    private bool show;
+    private bool isShowing;
     private bool stopRoll = true;
 
     private float transitionVelocity;
@@ -27,7 +27,7 @@ public class CreditsScreen : UIMonoBehaviour
     public void ShowCredits()
     {
         stopRoll = false;
-        show = true;
+        isShowing = true;
 
         Vector2 pos = creditsRoot.anchoredPosition;
         pos.y = initialY;
@@ -43,19 +43,19 @@ public class CreditsScreen : UIMonoBehaviour
             creditsRoot.anchoredPosition = pos;
         }
 
-        float targetAlpha = show ? 1f : 0f;
+        float targetAlpha = isShowing ? 1f : 0f;
         creditsGroup.alpha = Mathf.SmoothDamp(creditsGroup.alpha, targetAlpha, ref transitionVelocity, transitionSmoothTime);
 
-        if (show && Input.GetKeyDown(KeyCode.Escape))
-            show = false;
+        if (isShowing && Input.GetKeyDown(KeyCode.Escape))
+            isShowing = false;
 
         Debug.Log($"Thanks Y: {cam.ScreenToWorldPoint(thanksRect.position).y}");
         if (cam.ScreenToWorldPoint(thanksRect.position).y >= 0f && !stopRoll)
         {
             stopRoll = true;
-            LeanTween.delayedCall(thanksStayTime, () => show = false);
+            LeanTween.delayedCall(thanksStayTime, () => isShowing = false);
         }
 
-        creditsGroup.blocksRaycasts = show;
+        creditsGroup.blocksRaycasts = isShowing;
     }
 }

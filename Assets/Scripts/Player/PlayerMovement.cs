@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveInput;
     public Vector2 Direction { get; private set; }
+
+    private bool isSprinting;
     
     private void Awake()
     {
