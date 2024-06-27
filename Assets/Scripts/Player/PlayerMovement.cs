@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer gfx;
     
     private Rigidbody2D rb;
+    private PlayerInput input;
 
     private Vector2 moveInput;
     public Vector2 Direction { get; private set; }
@@ -18,10 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        input = GetComponent<PlayerInput>();
     }
 
     private void FixedUpdate()
     {
+        float speed = movementSpeed;
+        if (input.)
+
         Vector2 movement = moveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement);
     }
