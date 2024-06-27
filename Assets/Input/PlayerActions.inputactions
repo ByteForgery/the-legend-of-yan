@@ -15,9 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+<<<<<<< Updated upstream
                     "name": "Toggle Inventory",
                     "type": "Button",
                     "id": "208d8668-3bfd-4ba6-aa0c-af3a9d2a17a9",
+=======
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "4f2cbf63-3814-4c83-9526-98ef65043797",
+>>>>>>> Stashed changes
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -82,10 +88,17 @@
                 },
                 {
                     "name": "",
+<<<<<<< Updated upstream
                     "id": "29f100b0-9e1a-47cd-a2f0-b8df665b6840",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
+=======
+                    "id": "ca00b532-0736-4776-90e8-40ba9f701aee",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+>>>>>>> Stashed changes
                     "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -93,6 +106,7 @@
                 },
                 {
                     "name": "",
+<<<<<<< Updated upstream
                     "id": "aeb83e83-d5bd-4481-8bf5-e65352fce9c7",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -110,6 +124,14 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Toggle Inventory",
+=======
+                    "id": "a971821e-cdda-451f-aa15-71e125cb702e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sprint",
+>>>>>>> Stashed changes
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
