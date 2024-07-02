@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class Enemy : Actor
+public abstract class Enemy : Actor
 {
     protected override void OnDeath()
     {

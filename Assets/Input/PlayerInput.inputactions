@@ -1,29 +1,23 @@
 {
-    "name": "PlayerActions",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
-            "id": "24df519c-ba2f-4b09-9ffa-71c6b13dd1d8",
+            "id": "f2ffd60b-27e8-4a5a-b7af-54819099be91",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "65e907d9-e0c3-40f3-b1c5-a16ca24925f9",
-                    "expectedControlType": "Stick",
+                    "id": "c84af1d8-cbdf-4194-a379-1fc47a4b3a08",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-<<<<<<< Updated upstream
                     "name": "Toggle Inventory",
                     "type": "Button",
-                    "id": "208d8668-3bfd-4ba6-aa0c-af3a9d2a17a9",
-=======
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "4f2cbf63-3814-4c83-9526-98ef65043797",
->>>>>>> Stashed changes
+                    "id": "a5b12cce-a814-4fc0-a549-cb4b153df17a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -33,7 +27,7 @@
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "d7638a10-1d6d-414c-ace6-cb987783855c",
+                    "id": "9ced4afe-c4d9-4a1d-af73-e98115bd4fa6",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -44,61 +38,54 @@
                 },
                 {
                     "name": "up",
-                    "id": "5048d14a-a49d-40d1-a135-6bb934a8652a",
+                    "id": "634ccb53-ee8e-43b0-bdf6-43c4a8fd72e2",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse and Keyboard",
+                    "groups": "Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "d2c48427-653d-482f-a0a3-1226457a00d1",
+                    "id": "0832bcb2-f68a-446e-b3cd-a7b63bfc9995",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse and Keyboard",
+                    "groups": "Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "bcf530ec-e63f-44d1-8af4-da85e20a427a",
+                    "id": "ecb48bf2-d03e-4b74-8346-12ad0b9cfe1e",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse and Keyboard",
+                    "groups": "Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "58b7ede8-d7bd-416d-b4fa-046e856f3b62",
+                    "id": "708c4667-2174-48ae-ba79-4811d9ac2648",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse and Keyboard",
+                    "groups": "Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-<<<<<<< Updated upstream
-                    "id": "29f100b0-9e1a-47cd-a2f0-b8df665b6840",
+                    "id": "914cb019-3548-45ec-8036-839e19fd41cf",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-=======
-                    "id": "ca00b532-0736-4776-90e8-40ba9f701aee",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "StickDeadzone",
->>>>>>> Stashed changes
                     "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -106,32 +93,23 @@
                 },
                 {
                     "name": "",
-<<<<<<< Updated upstream
-                    "id": "aeb83e83-d5bd-4481-8bf5-e65352fce9c7",
-                    "path": "<Keyboard>/e",
+                    "id": "e233c76c-d812-45d0-ab2b-437e662377be",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse and Keyboard",
+                    "groups": "Keyboard",
                     "action": "Toggle Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "234afca1-eaa0-4723-a48e-4e1879ec4049",
+                    "id": "290c1e3d-7957-47ae-a550-b6f6f25fbe0d",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Toggle Inventory",
-=======
-                    "id": "a971821e-cdda-451f-aa15-71e125cb702e",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Sprint",
->>>>>>> Stashed changes
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -140,16 +118,11 @@
     ],
     "controlSchemes": [
         {
-            "name": "Mouse and Keyboard",
-            "bindingGroup": "Mouse and Keyboard",
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
