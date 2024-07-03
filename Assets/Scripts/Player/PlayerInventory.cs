@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private float smoothTime;
     [SerializeField] private RectTransform inventoryRoot;
     [SerializeField] private RectTransform itemGrid;
-    
+    [SerializeField] private Image selectedItemDisplay;
+
     private float itemCooldown;
 
     public bool IsToggled { get; private set; }
@@ -17,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
 
     private int selectedCellIndex;
     private PlayerInventoryCell[] inventoryCells;
-    
+
     private void Awake()
     {
         inventoryCells = itemGrid.GetComponentsInChildren<PlayerInventoryCell>();
@@ -27,9 +29,9 @@ public class PlayerInventory : MonoBehaviour
     {
         Animate();
         MoveSelection();
-        
+
         itemCooldown = Mathf.Max(0f, itemCooldown - Time.deltaTime);
-        
+
         foreach (PlayerInventoryCell cell in inventoryCells)
             cell.selected = false;
 
@@ -39,11 +41,11 @@ public class PlayerInventory : MonoBehaviour
     private void MoveSelection()
     {
         if (!IsToggled) return;
-        
+
         int dir = 0;
         if (Input.GetKeyDown(KeyCode.A)) dir = -1;
         if (Input.GetKeyDown(KeyCode.D)) dir = 1;
-        
+
         int newSelectedCellIndex = selectedCellIndex + dir;
 
         if (newSelectedCellIndex < 0) newSelectedCellIndex = 0;

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a45ff2c2df37543953e5265a8a84e7, type: 3}
+  m_Name: Bow Item
+  m_EditorClassIdentifier: 
+  displayName: Bow
+  description: Shoots arrows
+  sprite: {fileID: -620115338, guid: b37e15de417f92740b7296f733bf0333, type: 3}
+  cooldown: 2
+  projectilePrefab: {fileID: 6638346040680940670, guid: e4fdae7d5c7cf354b81b7f55e3d13764, type: 3}

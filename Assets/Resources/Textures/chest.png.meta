@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chestgrid_0
+      name: chest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de92294ed52e65e4fa93c3bb7383e44b
-      internalID: 1754632408
+      spriteID: 52c9eceaefebd49419f586967da23976
+      internalID: -1986875443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chestgrid_1
+      name: chest_1
       rect:
         serializedVersion: 2
         x: 0
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 717c5ab440804e9409c22bc352cda798
-      internalID: -159172110
+      spriteID: fba0bd7cc9014984b85831b9b3f98361
+      internalID: -1532623629
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Chestgrid_0: 1754632408
-      Chestgrid_1: -159172110
+      chest_0: -1986875443
+      chest_1: -1532623629
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
