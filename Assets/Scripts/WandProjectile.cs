@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -25,8 +24,6 @@ public class WandProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otherCol)
     {
-        Debug.Log("COLLISION");
-        
         Transform other = otherCol.transform;
 
         Enemy enemy = other.GetComponent<Enemy>();

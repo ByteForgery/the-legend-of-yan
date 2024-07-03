@@ -15,4 +15,5 @@ MonoBehaviour:
   displayName: Fire Wand
   description: Shoots magic fireballs
   sprite: {fileID: -1419552017, guid: b37e15de417f92740b7296f733bf0333, type: 3}
+  cooldown: 3
   projectilePrefab: {fileID: 6638346040680940670, guid: ad052673d2acb7f4890e800328e05e51, type: 3}

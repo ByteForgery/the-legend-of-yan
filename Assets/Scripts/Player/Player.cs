@@ -1,9 +1,12 @@
-using UnityEngine;
-
-public class Player : MonoBehaviour
+public class Player : Actor
 {
     public void OnDeathAnimFinished()
     {
         Destroy(gameObject);
+    }
+
+    protected override void OnDeath()
+    {
+        
     }
 }

@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Use Item",
+                    "type": "Button",
+                    "id": "3a2b353a-ef26-41aa-a0f6-1181dd52eac6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Toggle Inventory",
                     "type": "Button",
                     "id": "a5b12cce-a814-4fc0-a549-cb4b153df17a",
@@ -110,6 +119,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Toggle Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76372144-06aa-49a7-8119-a8116ea83b3e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Use Item",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7eb4b412-cb6d-44f3-a310-d12ad3735125",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Use Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

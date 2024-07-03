@@ -5,11 +5,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private PlayerRotator rotator;
+    [SerializeField] private PlayerInventory inventory;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer gfx;
-    
+
     private Rigidbody2D rb;
-    private PlayerInput input;
 
     private Vector2 moveInput;
     public Vector2 Direction { get; private set; }
@@ -19,20 +19,31 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        input = GetComponent<PlayerInput>();
     }
 
     private void FixedUpdate()
     {
-        float speed = movementSpeed;
-        if (input.)
+        ApplyMovement();
+    }
 
+    private void ApplyMovement()
+    {
+        if (inventory.IsToggled) return;
+        
         Vector2 movement = moveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement);
     }
 
     public void Move(InputAction.CallbackContext ctx)
     {
+        if (inventory.IsToggled)
+        {
+            moveInput = Vector2.zero;
+            Direction = Vector2.zero;
+            animator.SetBool("IsMoving", false);
+            return;
+        }
+        
         moveInput = ctx.ReadValue<Vector2>();
 
         if (IsMoving)
