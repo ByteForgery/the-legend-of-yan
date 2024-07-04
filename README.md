@@ -8,7 +8,7 @@ Made for school project.
 The game is currently a wave fighter game where you have three different items to defeat moonwalking orcs.
 
 ### Controls
-Move: WASD
-Use Item: E
-Interact: F
-Toggle Inventory: Tab
+Move: WASD<br>
+Use Item: E<br>
+Interact: F<br>
+Toggle Inventory: Tab<br>
