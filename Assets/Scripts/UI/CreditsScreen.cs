@@ -49,7 +49,6 @@ public class CreditsScreen : UIMonoBehaviour
         if (isShowing && Input.GetKeyDown(KeyCode.Escape))
             isShowing = false;
 
-        Debug.Log($"Thanks Y: {cam.ScreenToWorldPoint(thanksRect.position).y}");
         if (cam.ScreenToWorldPoint(thanksRect.position).y >= 0f && !stopRoll)
         {
             stopRoll = true;

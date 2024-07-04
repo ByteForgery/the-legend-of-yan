@@ -2,19 +2,28 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
-    [SerializeField, InspectorName("Max Health")] private float _maxHealth;
-    [SerializeField, InspectorName("Health")] private float _health;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _health;
 
-    public float MaxHealth
+    public int MaxHealth
     {
         get => _maxHealth;
-        set => _maxHealth = Mathf.Max(value, 0f);
+        set
+        {
+            if (value < 0) value = 0;
+            _maxHealth = value;
+        }
     }
     
-    public float Health
+    public int Health
     {
         get => _health;
-        set => _health = Mathf.Clamp(value, 0f, _maxHealth);
+        set
+        {
+            if (value < 0) value = 0;
+            if (value > _maxHealth) value = _maxHealth;
+            _health = value;
+        }
     }
 
     public virtual void Damage(int damage)
@@ -51,7 +60,9 @@ public abstract class Actor : MonoBehaviour
     
     private void OnValidate()
     {
-        _maxHealth = Mathf.Max(_maxHealth, 0f);
-        _health = Mathf.Clamp(_health, 0f, _maxHealth);
+        if (_maxHealth < 0) _maxHealth = 0;
+
+        if (_health < 0) _health = 0;
+        if (_health > _maxHealth) _health = _maxHealth;
     }
 }

@@ -18,5 +18,7 @@ public class PlayerInventoryCell : MonoBehaviour
         outline.SetActive(selected);
     }
 
+    public void Clear() => item = null;
+
     public Item Item => item;
 }

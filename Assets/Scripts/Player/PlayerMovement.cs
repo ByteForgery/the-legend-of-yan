@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         {
             moveInput = Vector2.zero;
             Direction = Vector2.zero;
-            animator.SetBool("IsMoving", false);
+            animator.Play("");
             return;
         }
         

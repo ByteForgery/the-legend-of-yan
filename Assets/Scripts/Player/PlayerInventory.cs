@@ -1,12 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<Item> ownedItems = new List<Item>();
-    
     [SerializeField] private float smoothTime;
     [SerializeField] private RectTransform inventoryRoot;
     [SerializeField] private RectTransform itemGrid;
@@ -36,6 +33,8 @@ public class PlayerInventory : MonoBehaviour
             cell.selected = false;
 
         inventoryCells[selectedCellIndex].selected = true;
+
+        selectedItemDisplay.sprite = SelectedItem.Sprite;
     }
 
     private void MoveSelection()
@@ -66,12 +65,16 @@ public class PlayerInventory : MonoBehaviour
     public void UseItem(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed || itemCooldown > 0f) return;
-
-        SelectedItem.Use(transform);
+        
+        SelectedItem.Use(GetComponent<Player>());
         itemCooldown = SelectedItem.Cooldown;
+
+        if (selectedCellIndex == inventoryCells.Length - 1)
+            SelectedCell.Clear();
     }
 
     public void ToggleInventory(InputAction.CallbackContext _) => IsToggled = !IsToggled;
 
-    public Item SelectedItem => inventoryCells[selectedCellIndex].Item;
+    private PlayerInventoryCell SelectedCell => inventoryCells[selectedCellIndex];
+    private Item SelectedItem => SelectedCell.Item;
 }
