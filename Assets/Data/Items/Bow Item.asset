@@ -17,4 +17,4 @@ MonoBehaviour:
   sprite: {fileID: 247442128, guid: b37e15de417f92740b7296f733bf0333, type: 3}
   cooldown: 0.75
   manaConsumption: 0
-  projectilePrefab: {fileID: 6638346040680940670, guid: e4fdae7d5c7cf354b81b7f55e3d13764, type: 3}
+  projectilePrefab: {fileID: 6638346040680940670, guid: 03d779f241d43394394ec959484695ec, type: 3}

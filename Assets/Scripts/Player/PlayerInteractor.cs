@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,19 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private float interactionDistance = 1f;
     [SerializeField] private LayerMask interactableMask;
 
+    private Player player;
+    
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
+
     public void Interact(InputAction.CallbackContext context)
     {
+        if (player.IsDead) return;
+        
         if (context.performed)
         {
-            Debug.Log("HEYHO MINECRAFT FREUNDE");
-
             // Ray erstellung in blickrichtung
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, interactionDistance, interactableMask);
             if (hit != false)

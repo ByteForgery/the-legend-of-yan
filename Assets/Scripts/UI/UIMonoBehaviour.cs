@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UIMonoBehaviour : MonoBehaviour
 {
-    protected RectTransform rectTransform
+    protected RectTransform RectTransform
     {
         get => (RectTransform)transform;
     }

@@ -29,9 +29,9 @@ public class LocationDiscoveredPopup : UIMonoBehaviour
         RectTransform nameTrans = nameText.rectTransform;
         RectTransform locationTrans = locationText.rectTransform;
         
-        Vector2 size = rectTransform.sizeDelta;
+        Vector2 size = RectTransform.sizeDelta;
         size.x = nameTrans.rect.width;
-        rectTransform.sizeDelta = size;
+        RectTransform.sizeDelta = size;
 
         float newUnderlineX = -locationTrans.rect.width - underlinePadding;
         underlineSpace.anchoredPosition = new Vector2(newUnderlineX, underlineSpace.anchoredPosition.y);

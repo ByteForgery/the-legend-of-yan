@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer gfx;
 
+    private Player player;
     private Rigidbody2D rb;
 
     private Vector2 moveInput;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake()
     {
+        player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyMovement()
     {
-        if (inventory.IsToggled) return;
+        if (inventory.isToggled) return;
         
         Vector2 movement = moveInput.normalized * (movementSpeed * Time.fixedDeltaTime);
         rb.MovePosition(rb.position + movement);
@@ -36,11 +38,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        if (inventory.IsToggled)
+        if (player.IsDead)
         {
             moveInput = Vector2.zero;
             Direction = Vector2.zero;
-            animator.Play("");
+            return;
+        }
+        
+        if (inventory.isToggled)
+        {
+            moveInput = Vector2.zero;
+            Direction = Vector2.zero;
+            animator.Play("idle");
             return;
         }
         
@@ -49,9 +58,9 @@ public class PlayerMovement : MonoBehaviour
         if (IsMoving)
         {
             Direction = moveInput;
-            animator.SetBool("IsMoving", true);
+            animator.Play("running");
         } else
-            animator.SetBool("IsMoving", false);
+            animator.Play("idle");
 
         rotator.ApplyDirection(Direction);
 

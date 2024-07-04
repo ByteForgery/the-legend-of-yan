@@ -5,7 +5,11 @@ public class Player : Actor
     [SerializeField] private int _maxMana;
     [SerializeField] private int _mana;
     [SerializeField] private HeartDisplay heartDisplay;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform projectileSpawnspot;
+    [SerializeField] private DeathScreen deathScreen;
+
+    public bool IsDead { get; private set; }
 
     public int MaxMana
     {
@@ -31,9 +35,6 @@ public class Player : Actor
     private void Update()
     {
         heartDisplay.SetHealth(Health);
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-            Damage(1);
     }
 
     public void DrainMana(int mana)
@@ -57,15 +58,15 @@ public class Player : Actor
 
         Mana += mana;
     }
-    
-    public void OnDeathAnimFinished()
-    {
-        Destroy(gameObject);
-    }
 
     protected override void OnDeath()
     {
+        animator.Play("death");
+        IsDead = true;
+
+        GetComponent<PlayerInventory>().isToggled = false;
         
+        deathScreen.Show();
     }
     
     private void OnValidate()

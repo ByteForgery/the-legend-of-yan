@@ -1,30 +1,39 @@
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public bool isToggled;
+    
     [SerializeField] private float smoothTime;
     [SerializeField] private RectTransform inventoryRoot;
     [SerializeField] private RectTransform itemGrid;
     [SerializeField] private Image selectedItemDisplay;
+    [SerializeField] private TMP_Text itemNameText, itemDescriptionText;
 
     private float itemCooldown;
-
-    public bool IsToggled { get; private set; }
+    
     private float smoothVelocity;
 
     private int selectedCellIndex;
     private PlayerInventoryCell[] inventoryCells;
 
+    private Player player;
+
     private void Awake()
     {
+        player = GetComponent<Player>();
+        
         inventoryCells = itemGrid.GetComponentsInChildren<PlayerInventoryCell>();
     }
 
     private void Update()
     {
+        if (player.IsDead) return;
+        
         Animate();
         MoveSelection();
 
@@ -36,11 +45,14 @@ public class PlayerInventory : MonoBehaviour
         inventoryCells[selectedCellIndex].selected = true;
 
         selectedItemDisplay.sprite = SelectedItem.Sprite;
+
+        itemNameText.text = SelectedItem.DisplayName;
+        itemDescriptionText.text = SelectedItem.Description;
     }
 
     private void MoveSelection()
     {
-        if (!IsToggled) return;
+        if (!isToggled) return;
 
         int dir = 0;
         if (Input.GetKeyDown(KeyCode.A)) dir = -1;
@@ -57,7 +69,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Animate()
     {
-        float targetY = IsToggled ? 0f : 1100f;
+        float targetY = isToggled ? 0f : 1100f;
 
         Vector2 pos = inventoryRoot.anchoredPosition;
         pos.y = Mathf.SmoothDamp(pos.y, targetY, ref smoothVelocity, smoothTime);
@@ -89,7 +101,12 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void ToggleInventory(InputAction.CallbackContext _) => IsToggled = !IsToggled;
+    public void ToggleInventory(InputAction.CallbackContext _)
+    {
+        if (player.IsDead) return;
+        
+        isToggled = !isToggled;
+    }
 
     private PlayerInventoryCell SelectedCell => inventoryCells[selectedCellIndex];
     private Item SelectedItem => SelectedCell.item;

@@ -6,15 +6,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-
     private NavMeshAgent agent;
+    
+    private Transform player;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     private void Update()
