@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -46,9 +47,10 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D)) dir = 1;
 
         int newSelectedCellIndex = selectedCellIndex + dir;
+        int inventoryCellsLength = inventoryCells.Length - (PotionCell.item == null ? 1 : 0);
 
         if (newSelectedCellIndex < 0) newSelectedCellIndex = 0;
-        if (newSelectedCellIndex >= inventoryCells.Length) newSelectedCellIndex = inventoryCells.Length - 1;
+        if (newSelectedCellIndex >= inventoryCellsLength) newSelectedCellIndex = inventoryCellsLength - 1;
 
         selectedCellIndex = newSelectedCellIndex;
     }
@@ -70,11 +72,26 @@ public class PlayerInventory : MonoBehaviour
         itemCooldown = SelectedItem.Cooldown;
 
         if (selectedCellIndex == inventoryCells.Length - 1)
-            SelectedCell.Clear();
+        {
+            selectedCellIndex = 0;
+            PotionCell.Clear();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        Transform other = col.transform;
+        DroppedPotionItem potionItem = other.GetComponent<DroppedPotionItem>();
+        if (potionItem != null)
+        {
+            PotionCell.item = potionItem.Potion;
+            potionItem.Pickup();
+        }
     }
 
     public void ToggleInventory(InputAction.CallbackContext _) => IsToggled = !IsToggled;
 
     private PlayerInventoryCell SelectedCell => inventoryCells[selectedCellIndex];
-    private Item SelectedItem => SelectedCell.Item;
+    private Item SelectedItem => SelectedCell.item;
+    private PlayerInventoryCell PotionCell => inventoryCells.Last();
 }

@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 5
   damage: 10
-  range: 6.38
+  range: 6.5
 --- !u!50 &4878509653244786229
 Rigidbody2D:
   serializedVersion: 4

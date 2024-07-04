@@ -5,6 +5,7 @@ public class Player : Actor
     [SerializeField] private int _maxMana;
     [SerializeField] private int _mana;
     [SerializeField] private HeartDisplay heartDisplay;
+    [SerializeField] private Transform projectileSpawnspot;
 
     public int MaxMana
     {
@@ -76,4 +77,6 @@ public class Player : Actor
     }
 
     public bool HasMana => Mana > 0;
+
+    public Transform ProjectileSpawnspot => projectileSpawnspot;
 }

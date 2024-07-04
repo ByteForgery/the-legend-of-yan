@@ -3,15 +3,21 @@ using UnityEngine.UI;
 
 public class PlayerInventoryCell : MonoBehaviour
 {
+    public Item item;
+
     [HideInInspector] public bool selected;
 
-    [SerializeField] private Item item;
     [SerializeField] private Image iconImage;
     [SerializeField] private GameObject outline;
 
     private void Update()
     {
-        if (item == null) return;
+        if (item == null)
+        {
+            iconImage.sprite = null;
+            outline.SetActive(false);
+            return;
+        }
             
         iconImage.sprite = item.Sprite;
         
@@ -19,6 +25,4 @@ public class PlayerInventoryCell : MonoBehaviour
     }
 
     public void Clear() => item = null;
-
-    public Item Item => item;
 }

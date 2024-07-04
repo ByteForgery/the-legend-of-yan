@@ -15,9 +15,9 @@ TagManager:
   - Player
   - Walls
   - Bullet
-  - 
-  - 
-  - 
+  - Interactable
+  - Dropped Item
+  - Dropped Item Ground
   - 
   - 
   - 
