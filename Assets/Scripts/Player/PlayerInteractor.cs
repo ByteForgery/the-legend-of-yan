@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,13 +6,7 @@ public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] private float interactionDistance = 1f;
     [SerializeField] private LayerMask interactableMask;
-
-    private Player player;
-    
-    private void Awake()
-    {
-        player = GetComponent<Player>();
-    }
+    [SerializeField] private Player player;
 
     public void Interact(InputAction.CallbackContext context)
     {

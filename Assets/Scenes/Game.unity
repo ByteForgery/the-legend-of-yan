@@ -8815,6 +8815,7 @@ MonoBehaviour:
   interactableMask:
     serializedVersion: 2
     m_Bits: 1024
+  player: {fileID: 1954508507}
 --- !u!1 &1238855837
 GameObject:
   m_ObjectHideFlags: 0
