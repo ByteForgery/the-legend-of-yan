@@ -8,6 +8,8 @@ public class HealItem : Item
 
     public override void Use(Player player)
     {
+        base.Use(player);
+        
         player.Heal(heal);
         player.AddMana(mana);
     }

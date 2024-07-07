@@ -5,6 +5,7 @@ public class Player : Actor
     [SerializeField] private int _maxMana;
     [SerializeField] private int _mana;
     [SerializeField] private HeartDisplay heartDisplay;
+    [SerializeField] private ManaBarDisplay manaBarDisplay;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform projectileSpawnspot;
     [SerializeField] private DeathScreen deathScreen;
@@ -35,6 +36,7 @@ public class Player : Actor
     private void Update()
     {
         heartDisplay.SetHealth(Health);
+        manaBarDisplay.SetMana(Mana, MaxMana);
     }
 
     public void DrainMana(int mana)
