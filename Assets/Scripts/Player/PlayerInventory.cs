@@ -79,6 +79,8 @@ public class PlayerInventory : MonoBehaviour
     public void UseItem(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed || itemCooldown > 0f) return;
+
+        Player player = GetComponent<Player>();
         
         SelectedItem.Use(GetComponent<Player>());
         itemCooldown = SelectedItem.Cooldown;
