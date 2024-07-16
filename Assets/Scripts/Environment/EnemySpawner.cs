@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SetLevel() 
     {
-        level = count / 2;
+        level = count / 20;
         if (level > 5)
         { level = 5; }
         else

@@ -8,15 +8,15 @@ public class LevelDisplay : MonoBehaviour
     private int level = 0;
     private int levelbefore = 0;
     private EnemySpawner EnemyLevel;
-    private TextMeshProUGUI text;
+    private TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
         EnemyLevel = GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>();
-        if (EnemyLevel == null) Debug.Log(EnemyLevel);
-        text = GetComponent<TextMeshProUGUI>();
+        if (EnemyLevel == null) Debug.Log("GObj leer");
+        text = GetComponent<TMP_Text>();
         if(text == null)
-        { Debug.Log("leer"); }
+        { Debug.Log("text leer"); }
         text.text = "";
     }
 
@@ -25,7 +25,7 @@ public class LevelDisplay : MonoBehaviour
         level = EnemyLevel.level;
         Debug.Log(level);
         if (level > levelbefore) { 
-        text.text = "Level" + level;
+        text.text = "Level " + level;
         levelbefore = level;
         StartCoroutine(ShowHide());
         }
